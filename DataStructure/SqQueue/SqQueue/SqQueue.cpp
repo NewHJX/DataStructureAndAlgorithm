@@ -1,4 +1,3 @@
-
 #include "SqQueue.h"
 //新建队列元素节点
 struct QNode *new_node(char *d, int size) {
@@ -45,6 +44,5 @@ void pop_queue(struct Queue *q) {
 struct QNode *top_queue(struct Queue *q) {
 	if (q == NULL) return NULL;
 	if (q->front == NULL) { q->size = 0; return NULL; }
-    return q->front;
-
+	return q->front;
 }

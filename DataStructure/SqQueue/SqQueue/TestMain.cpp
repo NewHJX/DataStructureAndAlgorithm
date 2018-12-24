@@ -32,7 +32,7 @@ int main() {
 	if (cirqueue == NULL) { printf("create_cirqueue failed\n"); return -1; }
 	int val = 5;
 	push_cirqueue(cirqueue, val);
-	printf("size:%d,top:%d\n", cirqueue->size,top_cirqueue(cirqueue));
+	printf("size:%d,top:%d\n", cirqueue->size, top_cirqueue(cirqueue));
 	val = 6;
 	push_cirqueue(cirqueue, val);
 	printf("size:%d,top:%d\n", cirqueue->size, top_cirqueue(cirqueue));
