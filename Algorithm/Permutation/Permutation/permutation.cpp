@@ -62,12 +62,27 @@ void PrintVector(std::vector<int> &nums) {
 	}
 	std::cout << std::endl;
 }
-int main() {
+int main2() {
 	std::vector<int> nums = { 1,2,3 };
 	while (NextPermutation(nums.begin(), nums.end())) {
 		PrintVector(nums);
 	}
 	//notice now nums:1,2,3
+	getchar();
+	return 0;
+}
+
+
+int main()
+{
+	std::vector<char> arr = { 'a','b','c' };
+	while (next_permutation(arr.begin(), arr.end(), [](char a, char b) { return a < b; })) {
+		for (int i = 0; i < 3; ++i)
+		{
+			std::cout << arr[i] << " ";
+		}
+		std::cout << std::endl;
+	}
 	getchar();
 	return 0;
 }
