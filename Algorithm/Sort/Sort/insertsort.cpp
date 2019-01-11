@@ -26,13 +26,3 @@ void InsertSort(std::vector<int>::iterator first, std::vector<int>::iterator las
 	}
 }
 
-int main() {
-	std::vector<int> nums{ 9,8,7,6,5,4 };
-	InsertSort(nums.begin(), nums.end());
-	for (int i = 0; i < nums.size(); ++i) {
-		printf("%d ", nums[i]);
-	}
-	printf("\n");
-	getchar();
-	return 0;
-}
