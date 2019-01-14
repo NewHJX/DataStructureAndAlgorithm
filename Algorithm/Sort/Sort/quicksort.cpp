@@ -39,7 +39,7 @@ std::vector<int>::iterator AnotherQuickSortPartition(std::vector<int>::iterator 
 void QuickSort(std::vector<int>::iterator first, std::vector<int>::iterator last) {
 	int size = last - first;
 	if (size <= 1) return;
-	int median = GetMedian(*first, *(first + ((last-1 - first) / 2)), *(last - 1));
+	int median = GetMedian(*first, *(first + ((last - 1 - first) / 2)), *(last - 1));
 	std::vector<int>::iterator partition = QuickSortPartition(first, last, median);
 	if (first < partition) QuickSort(first, partition);
 	if (partition + 1 < last) QuickSort(partition + 1, last);
@@ -57,7 +57,7 @@ void AnotherQuickSort(std::vector<int>::iterator first, std::vector<int>::iterat
 //cur指针用来标记用来放置比pivot小的节点
 //explore指针用来搜索比pivot小的节点
 //pre指针用来返回pivot的最终位置
-void QuickSortPartitionForLinkedList(ListNode *head,ListNode *tail) {
+void QuickSortPartitionForLinkedList(ListNode *head, ListNode *tail) {
 	if (head == NULL || head->next == NULL || head->next == tail) return;
 	ListNode *pre = head;
 	ListNode *cur = head->next;
@@ -78,5 +78,4 @@ void QuickSortPartitionForLinkedList(ListNode *head,ListNode *tail) {
 
 void QuickSortForLinkedList(ListNode *list) {
 	QuickSortPartitionForLinkedList(list, NULL);
-
 }

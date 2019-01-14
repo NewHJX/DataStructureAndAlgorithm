@@ -25,4 +25,3 @@ void InsertSort(std::vector<int>::iterator first, std::vector<int>::iterator las
 		LinearInsert(first, i);
 	}
 }
-
