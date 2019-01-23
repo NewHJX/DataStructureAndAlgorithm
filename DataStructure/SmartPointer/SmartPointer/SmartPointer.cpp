@@ -1,4 +1,6 @@
 #include<iostream>
+//from https://www.cnblogs.com/wangguchangqing/p/6141743.html
+// https://www.cnblogs.com/QG-whz/p/4777312.html
 class Point
 {
 public:
@@ -21,7 +23,7 @@ class U_Ptr {
 private:
 	friend class SmartPt<Type>;
 	U_Ptr(Type *ptr) :p(ptr), count(1) {}
-	~U_Ptr() { delete p; }
+	~U_Ptr() { std::cout << "delete p" << std::endl; delete p; }
 	int count;
 	Type *p;
 };
@@ -29,13 +31,22 @@ private:
 template<typename T>
 class SmartPt {
 public:
-	SmartPt(T *ptr):rp(new U_Ptr<T>(ptr)){}
-	SmartPt(const SmartPt &sp) :rp(sp.rp) { ++rp->count; }
+	SmartPt(T *ptr):rp(new U_Ptr<T>(ptr)){
+		std::cout << "这里是SmartPt构造函数 rp地址:" << rp << std::endl;
+	}
+	//参数需要是引用，防止无限调用拷贝构造函数(浅拷贝)
+	SmartPt(const SmartPt &sp) :rp(sp.rp) { 
+		++rp->count; 
+		std::cout << "这里是SmartPt拷贝构造函数 rp地址:" << rp << std::endl;
+	}
+	//TODO 赋值时，指向同一个对象会delete两次
 	SmartPt& operator=(const SmartPt& rhs) {
+		if (rhs.rp->p == rp->p) return *this;
 		++rhs.rp->count;
 			if (--rp->count == 0)
 				delete rp;
 		rp = rhs.rp;
+		std::cout << "这里是SmartPt赋值运算符 rp地址：" << rp << std::endl;
 		return *this;
 	}
 	~SmartPt() {
