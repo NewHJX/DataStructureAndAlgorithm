@@ -1,7 +1,7 @@
 #include "insertsort.h"
 #include "quicksort.h"
 #include "heapsort.h"
-
+#include "mergesort.h"
 void PrintVector(std::vector<int> nums) {
 	for (int i = 0; i < nums.size(); ++i) {
 		printf("%d ", nums[i]);
@@ -45,6 +45,10 @@ int main() {
 	PrintListNode(node1);
 	//heap sort
 	nums = { 9,8,2,3,6,5,1 };	HeapSort(nums);
+	PrintVector(nums);
+
+	nums = { 9,8,2,3,6,5,1 };
+	MergeSort(nums, nums.size());
 	PrintVector(nums);
 	getchar();
 	return 0;
